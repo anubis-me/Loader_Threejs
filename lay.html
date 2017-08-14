@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>ENIGMA</title>
+		<meta charset="utf-8">
+		<meta name="generator" content="Three.js Editor">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				font-family: Helvetica, Arial, sans-serif;
+				font-size: 12px;
+				background-color: white;
+				margin: 0px;
+				overflow: hidden;
+				opacity:0.9;
+			}
+			.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+		</style>
+	</head>
+	<body ontouchstart="">
+		<script src="js/three.min.js"></script>
+		<script src="js/app.js"></script>
+		
+		
+		<script>
+
+			var loader = new THREE.FileLoader();
+			loader.load( 'app.json', function ( text ) {
+
+				var player = new APP.Player();
+				player.load( JSON.parse( text ) );
+				player.setSize( window.innerWidth, window.innerHeight );
+				player.play();
+
+				document.body.appendChild( player.dom );
+
+				window.addEventListener( 'resize', function () {
+					player.setSize( window.innerWidth, window.innerHeight );
+				} );
+		        var canvas = document.createElement("canvas");
+				var context = canvas.getContext("2d");
+				console.log(console);
+				var x = canvas.width / 2;
+				var y = canvas.height / 2;
+				context.font = "30pt Calibri";
+				context.textAlign = "center";
+				context.fillRect(0,0,600,600);
+				context.fillStyle = "blue";
+				context.fillText("Hello World!", x, y);
+				strDataURI = canvas.toDataURL("image/jpeg");
+				imag = new Image();
+				imag.src = strDataURI;
+				var mesh = new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( imag.src ) } );
+								
+
+			} );
+
+		</script> 
+		
+		<button class="button" style="vertical-align:middle;margin-left:auto;margin-right:auto;"><span>AMGINE </span></button>  
+			</body>
+</html>
