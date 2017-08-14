@@ -75,22 +75,7 @@
 				window.addEventListener( 'resize', function () {
 					player.setSize( window.innerWidth, window.innerHeight );
 				} );
-		        var canvas = document.createElement("canvas");
-				var context = canvas.getContext("2d");
-				console.log(console);
-				var x = canvas.width / 2;
-				var y = canvas.height / 2;
-				context.font = "30pt Calibri";
-				context.textAlign = "center";
-				context.fillRect(0,0,600,600);
-				context.fillStyle = "blue";
-				context.fillText("Hello World!", x, y);
-				strDataURI = canvas.toDataURL("image/jpeg");
-				imag = new Image();
-				imag.src = strDataURI;
-				var mesh = new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( imag.src ) } );
-								
-
+		        
 			} );
 
 		</script> 
